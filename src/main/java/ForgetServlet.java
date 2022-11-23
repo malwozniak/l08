@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 
 import static java.lang.System.out;
 
-@WebServlet("/forget")
+@WebServlet("/zapomnij")
 public class ForgetServlet extends HttpServlet {
 
     @Override
@@ -18,7 +18,11 @@ public class ForgetServlet extends HttpServlet {
 
         try {
 
+
+            HttpSession session=req.getSession(true);
             req.setCharacterEncoding(StandardCharsets.UTF_8.name());
+            String imie = req.getParameter("fname");
+            session.removeAttribute(imie);
             resp.sendRedirect("index.jsp");
         }
         catch(Exception exp){

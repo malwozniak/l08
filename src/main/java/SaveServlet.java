@@ -12,7 +12,7 @@ import java.util.Random;
 
 import static java.lang.System.out;
 
-@WebServlet("/save")
+@WebServlet("/zapisz")
 public class SaveServlet extends HttpServlet {
 
 
@@ -33,6 +33,7 @@ public class SaveServlet extends HttpServlet {
                     "" +
                     "<link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>"+
     "<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js'></script>"+
+                    "<script src=\"https://code.jquery.com/jquery-3.3.1.slim.min.js\" integrity=\"sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo\" crossorigin=\"anonymous\"></script>\n"+
 
                     "</head>");
             out.println("<body>");
@@ -48,8 +49,8 @@ public class SaveServlet extends HttpServlet {
             out.println(imie);
             out.println("</h2></div>");
             out.println("<div class='col'>");
-            out.println("<form action=\"forget\" method=\"get\">");
-            out.println("<input type='submit' name='item' class='btn btn-secondary mb-2' value='forget'>");
+            out.println("<form action=\"zapomnij\" method=\"get\">");
+            out.println("<input type='submit' name='item' class='btn btn-secondary mb-2' value='zapomnij'>");
             out.println("</form>");
             out.println("</div>");
             out.println("</div>");
@@ -108,7 +109,7 @@ public class SaveServlet extends HttpServlet {
             out.println("</body></html>");
             out.close();
 
-            resp.sendRedirect("/index.jsp");
+           if(imie == " ") resp.sendRedirect("/index.jsp");
         }
         catch(Exception exp){
             out.println(exp);
@@ -118,7 +119,7 @@ public class SaveServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        super.doGet(req, resp);
-        resp.sendRedirect("/l08");
+        resp.sendRedirect("/index.jsp");
     }
 
 }
